@@ -4,9 +4,13 @@ public class ArrayExamples {
 
   // Changes the input array to be in reversed order
   static void reverseInPlace(int[] arr) {
-    for(int i = 0; i < arr.length; i += 1) {
-      arr[i] = arr[arr.length - i - 1];
+    for(int i = 0; i < arr.length / 2; i += 1) {
+      int a = arr[i];
+      int b = arr[arr.length - i - 1];
+      arr[i] = b;
+      arr[arr.length - i - 1] = a;
     }
+    
   }
 
   // Returns a *new* array with all the elements of the input array in reversed
@@ -14,9 +18,9 @@ public class ArrayExamples {
   static int[] reversed(int[] arr) {
     int[] newArray = new int[arr.length];
     for(int i = 0; i < arr.length; i += 1) {
-      arr[i] = newArray[arr.length - i - 1];
+      newArray[i] = arr[arr.length - i - 1];
     }
-    return arr;
+    return newArray;
   }
 
   // Averages the numbers in the array (takes the mean), but leaves out the
@@ -25,16 +29,27 @@ public class ArrayExamples {
   static double averageWithoutLowest(double[] arr) {
     if(arr.length < 2) { return 0.0; }
     double lowest = arr[0];
+    int RemoveIndex = 0;
+
     for(double num: arr) {
-      if(num < lowest) { lowest = num; }
-    }
+      if(num < lowest) {lowest = num;}
+      }
+
     double sum = 0;
+    int removed = 0;
+    boolean checker = false;
+
     for(double num: arr) {
-      if(num != lowest) { sum += num; }
+      if(num == lowest && removed == 0){
+        removed = 1;
+        checker = true;
+      }
+      if (checker == false){
+        sum += num;
+      }
+      checker = false;
     }
     return sum / (arr.length - 1);
   }
-
-
 }
 
