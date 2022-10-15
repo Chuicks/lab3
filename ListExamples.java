@@ -7,10 +7,13 @@ class StringCheckA implements StringChecker{
   public boolean checkString(String s){
     if(s.contains("a")){
 
-      
+      return false;
     }
+    return false;
   }
+  
 }
+
 class ListExamples {
 
   // Returns a new list that has all the elements of the input list for which
