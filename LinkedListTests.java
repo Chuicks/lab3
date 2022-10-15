@@ -10,7 +10,7 @@ public void testprepend() {
         input1.append(4);
         input1.append(6);
         input1.append(6);
-        assertEquals(1, input1.length());
+        assertEquals(3, input1.length());
     }
 }
 
